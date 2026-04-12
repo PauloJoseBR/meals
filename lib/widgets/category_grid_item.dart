@@ -8,6 +8,25 @@ class CategoryGridItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: category.color);
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            category.color.withValues(alpha: 0.7),
+            category.color.withValues(alpha: 0.9),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Text(
+        category.title,
+        style: Theme.of(
+          context,
+        ).textTheme.titleLarge!.copyWith(color: Colors.white),
+      ),
+    );
   }
 }
