@@ -57,6 +57,22 @@ class MealItem extends StatelessWidget {
                           '${meal.duration} min',
                           style: TextStyle(color: Colors.white),
                         ),
+                        const SizedBox(width: 12),
+                        Icon(Icons.work, color: Colors.white),
+                        const SizedBox(width: 6),
+                        Text(
+                          meal.complexity.name.toUpperCase()[0] +
+                              meal.complexity.name.substring(1),
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        const SizedBox(width: 12),
+                        Icon(Icons.attach_money, color: Colors.white),
+                        const SizedBox(width: 6),
+                        Text(
+                          meal.affordability.name.toUpperCase()[0] +
+                              meal.affordability.name.substring(1),
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ],
                     ),
                   ],
