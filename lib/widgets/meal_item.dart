@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals/models/meal.dart';
+import 'package:meals/widgets/meal_item_trait.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
@@ -51,27 +52,23 @@ class MealItem extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(Icons.schedule, color: Colors.white),
-                        const SizedBox(width: 6),
-                        Text(
-                          '${meal.duration} min',
-                          style: TextStyle(color: Colors.white),
+                        MealItemTrait(
+                          icon: Icons.schedule,
+                          label: '${meal.duration} min',
                         ),
                         const SizedBox(width: 12),
-                        Icon(Icons.work, color: Colors.white),
-                        const SizedBox(width: 6),
-                        Text(
-                          meal.complexity.name.toUpperCase()[0] +
+                        MealItemTrait(
+                          icon: Icons.work,
+                          label:
+                              meal.complexity.name.toUpperCase()[0] +
                               meal.complexity.name.substring(1),
-                          style: TextStyle(color: Colors.white),
                         ),
                         const SizedBox(width: 12),
-                        Icon(Icons.attach_money, color: Colors.white),
-                        const SizedBox(width: 6),
-                        Text(
-                          meal.affordability.name.toUpperCase()[0] +
+                        MealItemTrait(
+                          icon: Icons.attach_money,
+                          label:
+                              meal.affordability.name.toUpperCase()[0] +
                               meal.affordability.name.substring(1),
-                          style: TextStyle(color: Colors.white),
                         ),
                       ],
                     ),
