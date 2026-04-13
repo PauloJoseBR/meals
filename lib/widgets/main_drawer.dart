@@ -32,6 +32,18 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
           ),
+          ListTile(
+            leading: const Icon(Icons.restaurant),
+            title: Text(
+              'Meals',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+            onTap: () {
+              Navigator.of(context).pushReplacementNamed('/');
+            },
+          ),
         ],
       ),
     );
