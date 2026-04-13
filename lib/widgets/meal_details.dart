@@ -3,9 +3,14 @@ import 'package:meals/models/meal.dart';
 import 'package:transparent_image/transparent_image.dart';
 
 class MealDetails extends StatelessWidget {
-  const MealDetails({super.key, required this.meal});
+  const MealDetails({
+    super.key,
+    required this.meal,
+    required this.onToggleFavorite,
+  });
 
   final Meal meal;
+  final void Function(Meal meal) onToggleFavorite;
 
   String get complexityText =>
       meal.complexity.name[0].toUpperCase() + meal.complexity.name.substring(1);
@@ -16,10 +21,21 @@ class MealDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Meal meal = this.meal;
+    final void Function(Meal meal) onToggleFavorite = this.onToggleFavorite;
+
     return Scaffold(
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
+            actions: [
+              IconButton(
+                onPressed: () {
+                  onToggleFavorite(meal);
+                },
+                icon: const Icon(Icons.star),
+              ),
+            ],
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(

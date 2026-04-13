@@ -6,14 +6,21 @@ class MealsScreen extends StatelessWidget {
   static const String id = 'meal_screen';
   final String? title;
   final List<Meal> meals;
+  final void Function(Meal meal) onToggleFavorite;
 
-  const MealsScreen({super.key, this.title, required this.meals});
+  const MealsScreen({
+    super.key,
+    this.title,
+    required this.meals,
+    required this.onToggleFavorite,
+  });
 
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
       itemCount: meals.length,
-      itemBuilder: (context, index) => MealItem(meal: meals[index]),
+      itemBuilder: (context, index) =>
+          MealItem(meal: meals[index], onToggleFavorite: onToggleFavorite),
     );
 
     if (meals.isEmpty) {

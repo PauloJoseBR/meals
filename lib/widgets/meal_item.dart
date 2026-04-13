@@ -5,8 +5,13 @@ import 'package:transparent_image/transparent_image.dart';
 import 'package:meals/widgets/meal_details.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({super.key, required this.meal});
+  const MealItem({
+    super.key,
+    required this.meal,
+    required this.onToggleFavorite,
+  });
   final Meal meal;
+  final void Function(Meal meal) onToggleFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +24,10 @@ class MealItem extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => MealDetails(meal: meal)),
+            MaterialPageRoute(
+              builder: (context) =>
+                  MealDetails(meal: meal, onToggleFavorite: onToggleFavorite),
+            ),
           );
         },
         child: Stack(
