@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key});
+  const MainDrawer({super.key, required this.onSelectScreen});
+
+  final void Function(String identifier) onSelectScreen;
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +22,19 @@ class MainDrawer extends StatelessWidget {
                 end: Alignment.bottomRight,
               ),
             ),
-            child: Container(
-              color: Theme.of(context).colorScheme.primary,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Text(
-                'Cooking Up!',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
+            child: GestureDetector(
+              onTap: () {
+                onSelectScreen('meals');
+              },
+              child: Container(
+                color: Theme.of(context).colorScheme.primary,
+                width: double.infinity,
+                alignment: Alignment.center,
+                child: Text(
+                  'Cooking Up!',
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
                 ),
               ),
             ),
@@ -41,7 +48,19 @@ class MainDrawer extends StatelessWidget {
               ),
             ),
             onTap: () {
-              Navigator.of(context).pushReplacementNamed('/');
+              onSelectScreen('meals');
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: Text(
+              'Filters',
+              style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                color: Theme.of(context).colorScheme.onSurface,
+              ),
+            ),
+            onTap: () {
+              onSelectScreen('filters');
             },
           ),
         ],
